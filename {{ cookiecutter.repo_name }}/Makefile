@@ -34,9 +34,13 @@ clean:
 	find . -type f -name "*.py[co]" -delete
 	find . -type d -name "__pycache__" -delete
 
-## Lint using flake8
+## Lint using pylint
 lint:
 	pylint --disable=R,C {{ cookiecutter.repo_name }}
+
+## Format with black
+format:
+	black {{ cookiecutter.repo_name }}/*.py
 
 ## Upload Data to S3
 sync_data_to_s3:
