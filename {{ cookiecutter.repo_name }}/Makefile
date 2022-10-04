@@ -36,7 +36,7 @@ clean:
 
 ## Lint using flake8
 lint:
-	flake8 {{ cookiecutter.repo_name }}
+	pylint --disable=R,C {{ cookiecutter.repo_name }}
 
 ## Upload Data to S3
 sync_data_to_s3:
