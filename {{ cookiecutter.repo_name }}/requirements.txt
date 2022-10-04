@@ -11,6 +11,7 @@ black
 pytest
 pytest-cov
 python-dotenv>=0.5.1
+jupyterlab
 {% if cookiecutter.python_interpreter != 'python3' %}
 
 # backwards compatibility
