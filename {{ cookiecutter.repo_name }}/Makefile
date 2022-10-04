@@ -46,6 +46,9 @@ format:
 test:
 	$(PYTHON_INTERPRETER) -m pytest -vv tests/
 
+## Run all development feedback loop steps
+all: requirements lint test format
+
 ## Upload Data to S3
 sync_data_to_s3:
 ifeq (default,$(PROFILE))
