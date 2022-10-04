@@ -42,6 +42,10 @@ lint:
 format:
 	black {{ cookiecutter.repo_name }}/*.py
 
+## Test with pytest
+test:
+	$(PYTHON_INTERPRETER) -m pytest -vv tests/
+
 ## Upload Data to S3
 sync_data_to_s3:
 ifeq (default,$(PROFILE))
