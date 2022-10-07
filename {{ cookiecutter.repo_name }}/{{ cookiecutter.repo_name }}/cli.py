@@ -64,4 +64,4 @@ def set_handler_level(verbose):
     if verbose:
         return logging.DEBUG
     else:
-        return 
+        return logging.ERROR
