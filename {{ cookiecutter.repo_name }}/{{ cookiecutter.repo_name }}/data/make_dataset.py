@@ -5,6 +5,9 @@ import logging
 def make_dataset():
     """
     Main logic for the subcommand make-dataset
+    This subcommand creates an interim dataset from raw and external data.
+    Transform data from `data/raw` and `data/external`
+    into an interim dataset in `data/interim`.
     """
     logger = logging.getLogger(__name__)
 
