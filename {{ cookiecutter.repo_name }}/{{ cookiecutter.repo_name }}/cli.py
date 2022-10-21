@@ -1,5 +1,6 @@
 import click
 import logging
+import {{ cookicutter.repo_name }}.data
 
 
 class Config(object):
@@ -20,6 +21,20 @@ def cli(config, verbose):
     config.logger = create_logger(verbose)
 
     config.logger.info("Start CLI program.")
+
+
+@cli.command()
+@pass_config
+def make_dataset(config):
+    """
+    Make an interim dataset.
+    Transform data from `data/raw` and/or `data/external` into a dataset in `data/interim`.
+    """
+    config.logger.info("Make dataset")
+
+    chromatin_accessibility.data.make_dataset()
+
+    config.logger.info("Dataset made")
 
 
 @cli.command()
