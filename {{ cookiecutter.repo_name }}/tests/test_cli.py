@@ -1,5 +1,5 @@
 from click.testing import CliRunner
-from {{ cookicutter.repo_name }}.cli import cli
+from {{ cookiecutter.repo_name }}.cli import cli
 
 
 def test_say_hello():
