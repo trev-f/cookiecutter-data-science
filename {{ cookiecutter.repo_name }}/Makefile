@@ -39,11 +39,11 @@ clean:
 
 ## Lint using pylint
 lint:
-	pylint --disable=R,C {{ cookiecutter.repo_name }}
+	pylint --disable=R,C $(PROJECT_NAME)
 
 ## Format with black
 format:
-	black {{ cookiecutter.repo_name }}/*.py
+	black $(PROJECT_NAME)/*.py
 
 ## Test with pytest
 test:
