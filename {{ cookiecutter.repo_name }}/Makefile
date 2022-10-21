@@ -9,6 +9,7 @@ BUCKET = {{ cookiecutter.s3_bucket }}
 PROFILE = {{ cookiecutter.aws_profile }}
 PROJECT_NAME = {{ cookiecutter.repo_name }}
 PYTHON_INTERPRETER = {{ cookiecutter.python_interpreter }}
+CLI_COMMAND = {{ cookicutter.repo_name.replace("_", "-") }}
 
 ifeq (,$(shell which conda))
 HAS_CONDA=False
@@ -27,7 +28,9 @@ requirements: test_environment
 
 ## Make Dataset
 data: requirements
-	$(PYTHON_INTERPRETER) {{ cookiecutter.repo_name }}/data/make_dataset.py data/raw data/processed
+	$(CLI_COMMAND) download-data
+	$(CLI_COMMAND) make-dataset
+	$(CLI_COMMAND) process-dataset
 
 ## Delete all compiled Python files
 clean:
