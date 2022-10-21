@@ -16,8 +16,8 @@ def test_make_dataset():
     assert "Make dataset!" in result.output
 
 
-def test_finalize_dataset():
+def test_process_dataset():
     runner = CliRunner()
-    result = runner.invoke(cli, ["finalize-dataset"])
+    result = runner.invoke(cli, ["process-dataset"])
     assert result.exit_code == 0
-    assert "Finalize the dataset!" in result.output
+    assert "Process the dataset!" in result.output

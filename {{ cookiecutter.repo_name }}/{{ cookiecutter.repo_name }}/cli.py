@@ -53,14 +53,14 @@ def make_dataset(config):
 
 @cli.command()
 @pass_config
-def finalize_dataset(config):
+def process_dataset(config):
     """
     Make a final processed dataset.
-    Transform data from `data/interim` into a finalized dataset in `data/processed`.
+    Transform data from `data/interim` into a final processed dataset in `data/processed`.
     """
     config.logger.info("Make final processed dataset")
 
-    {{ cookiecutter.repo_name }}.data.finalize_dataset()
+    {{ cookiecutter.repo_name }}.data.process_dataset()
 
     config.logger.info("Final processed dataset made")
 

@@ -6,4 +6,4 @@ and adds a layer of abstraction.
 
 from {{ cookiecutter.repo_name }}.data.download_data import download_data
 from {{ cookiecutter.repo_name }}.data.make_dataset import make_dataset
-from {{ cookiecutter.repo_name }}.data.finalize_dataset import finalize_dataset
+from {{ cookiecutter.repo_name }}.data.process_dataset import process_dataset
