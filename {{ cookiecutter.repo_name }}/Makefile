@@ -49,6 +49,10 @@ test:
 ## Run all development feedback loop steps
 all: requirements lint test format
 
+## Create a virtualenv with venv
+virtual_environment:
+	$(PYTHON_INTERPRETER) -m venv venv
+
 ## Upload Data to S3
 sync_data_to_s3:
 ifeq (default,$(PROFILE))
