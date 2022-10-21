@@ -1,6 +1,6 @@
 import click
 import logging
-import {{ cookicutter.repo_name }}.data
+import {{ cookiecutter.repo_name }}.data
 
 
 class Config(object):
@@ -32,7 +32,7 @@ def make_dataset(config):
     """
     config.logger.info("Make dataset")
 
-    chromatin_accessibility.data.make_dataset()
+    {{ cookiecutter.repo_name }}.data.make_dataset()
 
     config.logger.info("Dataset made")
 
