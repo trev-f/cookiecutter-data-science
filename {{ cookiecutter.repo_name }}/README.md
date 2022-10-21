@@ -20,6 +20,21 @@ and make sure intial linting, tests, and formatting runs correctly. All these ch
 make check
 ```
 
+### Development
+
+This template was designed with test driven development (TDD) and continuous integration (CI) in mind.
+
+For TDD, add tests to the `tests/` directory.
+Throughtout the development cycle, after changes are made, continuously run `make check` to perform:
+
+  1. Installation of packages in `requirements.txt` by `pip`.
+  2. Linting of `.py` files with `pylint`.
+  3. Testing of `tests/` with `pytest`.
+  4. Formatting of `.py` files with `Black`.
+
+For CI, use entrypoints in `Makefile`, such as `make check` to run automated tests with your platform of choice.
+I'm a big fan of simply using `make check` in GitHub Actions.
+
 ## Project Organization
 
 ```text
