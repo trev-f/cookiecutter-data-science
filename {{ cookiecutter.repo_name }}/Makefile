@@ -9,6 +9,7 @@ BUCKET = {{ cookiecutter.s3_bucket }}
 PROFILE = {{ cookiecutter.aws_profile }}
 PROJECT_NAME = {{ cookiecutter.repo_name }}
 PYTHON_INTERPRETER = {{ cookiecutter.python_interpreter }}
+CLI_COMMAND = {{ cookiecutter.repo_name.replace("_", "-") }}
 
 ifeq (,$(shell which conda))
 HAS_CONDA=False
@@ -27,7 +28,9 @@ requirements: test_environment
 
 ## Make Dataset
 data: requirements
-	$(PYTHON_INTERPRETER) {{ cookiecutter.repo_name }}/data/make_dataset.py data/raw data/processed
+	$(CLI_COMMAND) download-data
+	$(CLI_COMMAND) make-dataset
+	$(CLI_COMMAND) process-dataset
 
 ## Delete all compiled Python files
 clean:
@@ -36,18 +39,22 @@ clean:
 
 ## Lint using pylint
 lint:
-	pylint --disable=R,C {{ cookiecutter.repo_name }}
+	pylint --disable=R,C $(PROJECT_NAME)
 
 ## Format with black
 format:
-	black {{ cookiecutter.repo_name }}/*.py
+	black $(PROJECT_NAME)/*.py
 
 ## Test with pytest
 test:
 	$(PYTHON_INTERPRETER) -m pytest -vv tests/
 
-## Run all development feedback loop steps
-all: requirements lint test format
+## Run all development feedback check steps
+check_development: requirements lint test format
+
+## Create a virtualenv with venv
+virtual_environment:
+	$(PYTHON_INTERPRETER) -m venv venv
 
 ## Upload Data to S3
 sync_data_to_s3:

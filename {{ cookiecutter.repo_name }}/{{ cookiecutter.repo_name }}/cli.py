@@ -1,6 +1,6 @@
 import click
 import logging
-import {{ cookicutter.repo_name }}.data
+import {{ cookiecutter.repo_name }}.data
 
 
 class Config(object):
@@ -18,9 +18,23 @@ pass_config = click.make_pass_decorator(Config, ensure=True)
 def cli(config, verbose):
     """Run commands from cfb_rankings_analysis module."""
     config.verbose = verbose
-    config.logger = create_logger(verbose)
+    config.logger = create_root_logger(verbose)
 
     config.logger.info("Start CLI program.")
+
+
+@cli.command()
+@pass_config
+def download_data(config):
+    """
+    Download external data.
+    Download external data into `data/external`.
+    """
+    config.logger.info("Download external data")
+
+    {{ cookiecutter.repo_name }}.data.download_data()
+
+    config.logger.info("External data download complete")
 
 
 @cli.command()
@@ -32,25 +46,31 @@ def make_dataset(config):
     """
     config.logger.info("Make dataset")
 
-    chromatin_accessibility.data.make_dataset()
+    {{ cookiecutter.repo_name }}.data.make_dataset()
 
     config.logger.info("Dataset made")
 
 
 @cli.command()
 @pass_config
-def say_hello(config):
-    """Print a simple 'Hello World!' to the console."""
-    config.logger.info("Say hello")
+def process_dataset(config):
+    """
+    Make a final processed dataset.
+    Transform data from `data/interim` into a final processed dataset in `data/processed`.
+    """
+    config.logger.info("Make final processed dataset")
 
-    click.echo("Hello World!")
+    {{ cookiecutter.repo_name }}.data.process_dataset()
 
-    config.logger.info("Said hello")
+    config.logger.info("Final processed dataset made")
 
 
-def create_logger(verbose):
+def create_root_logger(verbose):
+    """
+    Create a root logger
+    """
     # create the logger
-    logger = logging.getLogger(__name__)
+    logger = logging.getLogger()
     logger.setLevel(logging.INFO)
 
     # create a file handler

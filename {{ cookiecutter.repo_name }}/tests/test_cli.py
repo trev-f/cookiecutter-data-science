@@ -1,12 +1,12 @@
 from click.testing import CliRunner
-from {{ cookicutter.repo_name }}.cli import cli
+from {{ cookiecutter.repo_name }}.cli import cli
 
 
-def test_say_hello():
+def test_download_data():
     runner = CliRunner()
-    result = runner.invoke(cli, ["say-hello"])
+    result = runner.invoke(cli, ["download-data"])
     assert result.exit_code == 0
-    assert "Hello World" in result.output
+    assert "Download external data!" in result.output
 
 
 def test_make_dataset():
@@ -14,3 +14,10 @@ def test_make_dataset():
     result = runner.invoke(cli, ["make-dataset"])
     assert result.exit_code == 0
     assert "Make dataset!" in result.output
+
+
+def test_process_dataset():
+    runner = CliRunner()
+    result = runner.invoke(cli, ["process-dataset"])
+    assert result.exit_code == 0
+    assert "Process the dataset!" in result.output
