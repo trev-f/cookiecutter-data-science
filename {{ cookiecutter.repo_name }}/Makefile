@@ -50,7 +50,7 @@ test:
 	$(PYTHON_INTERPRETER) -m pytest -vv tests/
 
 ## Run all development feedback check steps
-check_development: requirements lint test format
+check: requirements lint test format
 
 ## Create a virtualenv with venv
 virtual_environment:
