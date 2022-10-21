@@ -18,7 +18,7 @@ pass_config = click.make_pass_decorator(Config, ensure=True)
 def cli(config, verbose):
     """Run commands from cfb_rankings_analysis module."""
     config.verbose = verbose
-    config.logger = create_logger(verbose)
+    config.logger = create_root_logger(verbose)
 
     config.logger.info("Start CLI program.")
 
@@ -48,9 +48,12 @@ def say_hello(config):
     config.logger.info("Said hello")
 
 
-def create_logger(verbose):
+def create_root_logger(verbose):
+    """
+    Create a root logger
+    """
     # create the logger
-    logger = logging.getLogger(__name__)
+    logger = logging.getLogger()
     logger.setLevel(logging.INFO)
 
     # create a file handler
