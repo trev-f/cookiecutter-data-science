@@ -37,17 +37,6 @@ def make_dataset(config):
     config.logger.info("Dataset made")
 
 
-@cli.command()
-@pass_config
-def say_hello(config):
-    """Print a simple 'Hello World!' to the console."""
-    config.logger.info("Say hello")
-
-    click.echo("Hello World!")
-
-    config.logger.info("Said hello")
-
-
 def create_root_logger(verbose):
     """
     Create a root logger
