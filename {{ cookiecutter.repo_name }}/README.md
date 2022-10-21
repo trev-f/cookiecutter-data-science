@@ -94,8 +94,8 @@ and adding any other functionality as subcommands of the main command.
 │                         generated with `pip freeze > requirements.txt`
 │
 ├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported
-├── {{ cookecutter.repo_name }}   <- Source code for python package used in this project.
-│   ├── __init__.py    <- Makes {{ cookecutter.repo_name }} a Python module
+├── {{ cookiecutter.repo_name }}   <- Source code for python package used in this project.
+│   ├── __init__.py    <- Makes {{ cookiecutter.repo_name }} a Python module
 │   ├── cli.py         <- Defines a CLI for the package. 
 │   │                     Access from the command line with {{ cookiecutter.repo_name.replace("_", "-") }}
 │   │
