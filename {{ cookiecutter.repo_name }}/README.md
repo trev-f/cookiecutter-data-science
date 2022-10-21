@@ -19,9 +19,10 @@ Project Organization
     │
     ├── models             <- Trained and serialized models, model predictions, or model summaries
     │
-    ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-    │                         the creator's initials, and a short `-` delimited description, e.g.
-    │                         `1.0-jqp-initial-data-exploration`.
+    ├── notebooks          <- Jupyter or RMarkdown notebooks.
+    |                         Naming convention is a number (for ordering), the creator's initials,
+    |                         and a short `-` delimited description,
+    |                         e.g. `1.0-jqp-initial-data-exploration`.
     │
     ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
     │
@@ -32,11 +33,16 @@ Project Organization
     │                         generated with `pip freeze > requirements.txt`
     │
     ├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported
-    ├── src                <- Source code for use in this project.
-    │   ├── __init__.py    <- Makes src a Python module
+    ├── {{ cookecutter.repo_name }}   <- Source code for python package used in this project.
+    │   ├── __init__.py    <- Makes {{ cookecutter.repo_name }} a Python module
+    │   ├── cli.py         <- Defines a CLI for the package. 
+    │   │                     Access from the command line with {{ cookiecutter.repo_name.replace("_", "-") }}
     │   │
-    │   ├── data           <- Scripts to download or generate data
-    │   │   └── make_dataset.py
+    │   ├── data           <- Scripts to download, generate, and/or process data.
+    │   │   └── __init__.py         <- Exposes the API for the data module.
+    │   │   └── download_data.py    <- Download data from external sources.
+    │   │   └── make_dataset.py     <- Make interim dataset from raw and/or external data.
+    │   │   └── process_dataset.py  <- Process interim dataset into a final processed dataset.
     │   │
     │   ├── features       <- Scripts to turn raw data into features for modeling
     │   │   └── build_features.py
@@ -50,7 +56,6 @@ Project Organization
     │       └── visualize.py
     │
     └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
-
 
 --------
 
