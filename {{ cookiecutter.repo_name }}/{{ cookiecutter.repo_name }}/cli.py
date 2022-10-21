@@ -25,6 +25,20 @@ def cli(config, verbose):
 
 @cli.command()
 @pass_config
+def download_data(config):
+    """
+    Download external data.
+    Download external data into `data/external`.
+    """
+    config.logger.info("Download external data")
+
+    {{ cookiecutter.repo_name }}.data.download_data()
+
+    config.logger.info("External data download complete")
+
+
+@cli.command()
+@pass_config
 def make_dataset(config):
     """
     Make an interim dataset.
