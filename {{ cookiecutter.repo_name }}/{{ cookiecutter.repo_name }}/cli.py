@@ -51,6 +51,20 @@ def make_dataset(config):
     config.logger.info("Dataset made")
 
 
+@cli.command()
+@pass_config
+def finalize_dataset(config):
+    """
+    Make a final processed dataset.
+    Transform data from `data/interim` into a finalized dataset in `data/processed`.
+    """
+    config.logger.info("Make final processed dataset")
+
+    {{ cookiecutter.repo_name }}.data.finalize_dataset()
+
+    config.logger.info("Final processed dataset made")
+
+
 def create_root_logger(verbose):
     """
     Create a root logger
