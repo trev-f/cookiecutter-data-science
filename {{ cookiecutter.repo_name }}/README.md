@@ -13,7 +13,7 @@ make virtual_environment
 . venv/bin/activate
 ```
 
-Run an initial check to be sure the template was installed correctly, install the initial requirements,
+Run an initial check to be sure the template was installed correctly, install the included Python package as an executable (allows for use of CLI), install required external packages,
 and make sure intial linting, tests, and formatting runs correctly. All these checks and tests should pass.
 
 ```bash
@@ -34,6 +34,35 @@ Throughtout the development cycle, after changes are made, continuously run `mak
 
 For CI, use entrypoints in `Makefile`, such as `make check` to run automated tests with your platform of choice.
 I'm a big fan of simply using `make check` in GitHub Actions.
+
+### Running scripts
+
+This template was designed to implement an easy to use CLI implemented by `Click`.
+The CLI code is implemented in `{{ cookiecutter.repo_name }}/cli.py`.
+All scripts are available as subcommands under a head command specified by the project name.
+
+To list the available subcommands and options:
+
+```bash
+{{ cookiecutter.repo_name.replace("_", "-") }} --help
+```
+
+For convenience, there are already scripts and subcommands templated for three common data processing operations:
+
+  1. `download-data`: Download external data
+  2. `make-dataset`: Transform raw or external data into an interim dataset
+  3. `process-dataset`: Transform an interim dataset into a final processed dataset
+
+For added convenience, a `make` command is provided that will perform all of these data commands.
+This aids reproducibility as collaborators (or your future self) can simply add the raw data and/or API credentials
+and run the following to produce the exact same data:
+
+```bash
+make data
+```
+
+I highly recommend adding your data processing functionality to the existing data commands
+and adding any other functionality as subcommands of the main command.
 
 ## Project Organization
 
