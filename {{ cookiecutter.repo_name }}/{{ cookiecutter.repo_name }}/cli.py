@@ -1,6 +1,6 @@
 import click
 import logging
-import {{ cookiecutter.repo_name }}.data
+import {{ cookiecutter.repo_name }}
 
 
 class Config(object):
@@ -32,7 +32,7 @@ def download_data(config):
     """
     config.logger.info("Download external data")
 
-    {{ cookiecutter.repo_name }}.data.download_data()
+    {{ cookiecutter.repo_name }}.data.download_data.main()
 
     config.logger.info("External data download complete")
 
@@ -46,7 +46,7 @@ def make_dataset(config):
     """
     config.logger.info("Make dataset")
 
-    {{ cookiecutter.repo_name }}.data.make_dataset()
+    {{ cookiecutter.repo_name }}.data.make_dataset.main()
 
     config.logger.info("Dataset made")
 
@@ -60,7 +60,7 @@ def process_dataset(config):
     """
     config.logger.info("Make final processed dataset")
 
-    {{ cookiecutter.repo_name }}.data.process_dataset()
+    {{ cookiecutter.repo_name }}.data.process_dataset.main()
 
     config.logger.info("Final processed dataset made")
 

@@ -106,14 +106,17 @@ and adding any other functionality as subcommands of the main command.
 │   │   └── process_dataset.py  <- Process interim dataset into a final processed dataset.
 │   │
 │   ├── features       <- Scripts to turn raw data into features for modeling
+│   │   └── __init__.py         <- Exposes the API for the features module.
 │   │   └── build_features.py
 │   │
 │   ├── models         <- Scripts to train models and then use trained models to make
+│   │   └── __init__.py         <- Exposes the API for the models module.
 │   │   │                 predictions
 │   │   ├── predict_model.py
 │   │   └── train_model.py
 │   │
 │   └── visualization  <- Scripts to create exploratory and results oriented visualizations
+│   │   └── __init__.py         <- Exposes the API for the visualization module.
 │       └── visualize.py
 │
 └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
