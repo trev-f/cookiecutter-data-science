@@ -2,7 +2,7 @@ import click
 import logging
 
 
-def download_data():
+def main():
     """
     Main logic for the subcommand download-data.
     This subcommand downloads data from an external source to `data/external`.
@@ -17,4 +17,4 @@ def download_data():
 
 
 if __name__ == "__main__":
-    download_data()
+    main()
