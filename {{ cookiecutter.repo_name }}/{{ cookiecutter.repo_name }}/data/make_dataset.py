@@ -2,7 +2,7 @@ import click
 import logging
 
 
-def make_dataset():
+def main():
     """
     Main logic for the subcommand make-dataset
     This subcommand creates an interim dataset from raw and external data.
@@ -19,4 +19,4 @@ def make_dataset():
 
 
 if __name__ == "__main__":
-    make_dataset()
+    main()

@@ -2,7 +2,7 @@ import click
 import logging
 
 
-def process_dataset():
+def main():
     """
     Main logic for the subcommand finalize-dataset.
     This subcommand creates a finalized dataset.
@@ -19,4 +19,4 @@ def process_dataset():
 
 
 if __name__ == "__main__":
-    process_dataset()
+    main()
